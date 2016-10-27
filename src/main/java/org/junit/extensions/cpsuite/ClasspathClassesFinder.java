@@ -91,14 +91,9 @@ public class ClasspathClassesFinder implements ClassesFinder {
 				if (tester.acceptClass(clazz)) {
 					classes.add(clazz);
 				}
-			} catch (ClassNotFoundException cnfe) {
-				// ignore not instantiable classes
-			} catch (NoClassDefFoundError ncdfe) {
-				// ignore not instantiable classes
-			} catch (ExceptionInInitializerError ciie) {
-				// ignore not instantiable classes
-			} catch (UnsatisfiedLinkError ule) {
-				// ignore not instantiable classes
+			}
+			catch(ClassNotFoundException e) {
+				throw new RuntimeException(e);
 			}
 		}
 	}
